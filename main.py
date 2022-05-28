@@ -20,10 +20,10 @@ Bootstrap(app)
 
 
 # CONNECT TO DB
-# uri = os.environ.get("DATABASE_URL",  "sqlite:///blog.db")
-# if uri.startswith("postgres://"):
-#     uri = uri.replace("postgres://", "postgresql://", 1)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///blog.db"
+uri = os.environ.get("DATABASE_URL")
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+app.config['SQLALCHEMY_DATABASE_URI'] = uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
